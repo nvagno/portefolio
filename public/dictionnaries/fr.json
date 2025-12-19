@@ -1,13 +1,7 @@
 {
-  "title": "Bienvenue",
-  "description": "Ceci est la page d'accueil",
-  "cta": "Commencer",
-  "navigation": {
-    "home": "Accueil",
-    "about": "À propos",
-    "contact": "Contact"
-  },
-  "footer": {
-    "copyright": "Tous droits réservés."
-  }
+  "home": "Accueil",
+  "works": "Expériences",
+  "portefolio": "Portefolio",
+  "contacts": "Contacts",
+  "language": "Langage"
 }

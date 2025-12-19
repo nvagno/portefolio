@@ -1,6 +1,6 @@
 "use client";
 
-import { NavigationMenu } from "@/components/navigation/menu";
+import { NavigationMenuSection } from "@/components/navigation/menu";
 import en_message from "@/public/dictionnaries/en.json";
 import fr_message from "@/public/dictionnaries/fr.json";
 import { useState } from "react";
@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <div>
       <IntlProvider locale={locale} messages={messages[locale]}>
-        <NavigationMenu />
+        <NavigationMenuSection setLocale={setLocale} />
       </IntlProvider>
     </div>
   );

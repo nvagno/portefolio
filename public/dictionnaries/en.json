@@ -1,13 +1,7 @@
 {
-  "title": "Welcome",
-  "description": "This is the home page",
-  "cta": "Get started",
-  "navigation": {
-    "home": "Home",
-    "about": "About",
-    "contact": "Contact"
-  },
-  "footer": {
-    "copyright": "All rights reserved."
-  }
+  "home": "Home",
+  "works": "Works",
+  "portefolio": "Portefolio",
+  "contacts": "Contacts",
+  "language": "Language"
 }
