@@ -136,7 +136,7 @@ export function ContactSection() {
                       id: "phone",
                     })}
                   </p>
-                  <p className="font-medium">+262 693 42 80 16</p>
+                  <p className="font-medium text-white">+262 693 42 80 16</p>
                 </div>
               </div>
 
@@ -147,8 +147,8 @@ export function ContactSection() {
                 <div className="text-sm">
                   <p className="text-slate-400 mb-1">Email</p>
                   <a
-                    href="mailto:contact@grande-ecole-it.com"
-                    className="font-medium transition-colors"
+                    href="mailto:nyhasinavagno@gmail.com"
+                    className="font-medium transition-colors text-white"
                   >
                     nyhasinavagno@gmail.com
                   </a>
@@ -165,7 +165,7 @@ export function ContactSection() {
                       id: "address",
                     })}
                   </p>
-                  <p className="font-medium leading-relaxed">
+                  <p className="font-medium leading-relaxed text-white">
                     14 Avenue Dr Jean-Marie Dambreville, 97410 Saint-Pierre, La
                     Réunion
                   </p>
