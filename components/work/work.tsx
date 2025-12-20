@@ -1,5 +1,11 @@
-export function Work() {
+export function WorkSection() {
   return (
-    <section className="flex flex-col p-5 rounded-md lg:m-20 md:flex-row gap-5 md:gap-8"></section>
+    <section
+      id="works"
+      className="relative bg-stone-400 min-h-screen flex items-center justify-center px-4"
+    >
+      <div></div>
+      <div></div>
+    </section>
   );
 }
