@@ -1,8 +1,10 @@
 "use client";
 
+import { ContactSection } from "@/components/contact/contact";
 import { HeroSection } from "@/components/hero/hero";
 import { NavigationMenuSection } from "@/components/navigation/menu";
-import { Work } from "@/components/work/work";
+import { PortefolioSection } from "@/components/portefolio/portefolio";
+import { WorkSection } from "@/components/work/work";
 import en_message from "@/public/dictionnaries/en.json";
 import fr_message from "@/public/dictionnaries/fr.json";
 import { useState } from "react";
@@ -28,6 +30,9 @@ export default function Home() {
       <IntlProvider locale={locale} messages={messages[locale]}>
         <NavigationMenuSection setLocale={setLocale} />
         <HeroSection />
+        <WorkSection />
+        <PortefolioSection />
+        <ContactSection />
       </IntlProvider>
     </div>
   );

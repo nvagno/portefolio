@@ -47,27 +47,34 @@ export function NavigationMenuSection({
   const isDark = resolvedTheme === "dark";
 
   const navItems = [
-    { id: "home", label: intl.formatMessage({ id: "home" }), icon: <Home /> },
+    {
+      id: "home",
+      label: intl.formatMessage({ id: "home" }),
+      icon: <Home />,
+      link: "#home",
+    },
     {
       id: "works",
       label: intl.formatMessage({ id: "works" }),
       icon: <BriefcaseBusiness />,
+      link: "#works",
     },
     {
       id: "portfolio",
       label: intl.formatMessage({ id: "portefolio" }),
       icon: <Code />,
+      link: "#portefolio",
     },
     {
       id: "contacts",
       label: intl.formatMessage({ id: "contacts" }),
       icon: <Contact />,
+      link: "#contacts",
     },
   ];
 
   const DesktopNavigation = () => (
     <header className="w-full fixed top-0 left-0 z-50 flex items-center p-4 lg:p-6">
-      {/* Blurred background */}
       <div
         className="absolute inset-0 backdrop-blur-md bg-background/70 dark:bg-background/80"
         aria-hidden="true"
@@ -87,8 +94,10 @@ export function NavigationMenuSection({
                   variant="ghost"
                   className="text-base font-medium hover:bg-primary/10 hover:backdrop-blur-sm transition-all"
                 >
-                  {item.icon}
-                  {item.label}
+                  <a href={item.link} className="flex items-center gap-1">
+                    {item.icon}
+                    {item.label}
+                  </a>
                 </Button>
               </NavigationMenuItem>
             ))}

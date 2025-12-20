@@ -6,7 +6,10 @@ export function HeroSection() {
   const intl = useIntl();
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center px-4 py-20"
+    >
       <div className="max-w-6xl mx-auto w-full">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 text-center md:text-left order-2 md:order-1">
