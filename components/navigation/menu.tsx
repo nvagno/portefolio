@@ -1,6 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
-import { Moon, Sun, Menu, X, Globe } from "lucide-react";
+import {
+  Moon,
+  Sun,
+  Menu,
+  X,
+  Globe,
+  Home,
+  BriefcaseBusiness,
+  Contact,
+  Code,
+} from "lucide-react";
 import { useTheme } from "next-themes";
 import {
   NavigationMenu,
@@ -37,25 +47,47 @@ export function NavigationMenuSection({
   const isDark = resolvedTheme === "dark";
 
   const navItems = [
-    { id: "home", label: intl.formatMessage({ id: "home" }) },
-    { id: "works", label: intl.formatMessage({ id: "works" }) },
-    { id: "portfolio", label: intl.formatMessage({ id: "portefolio" }) },
-    { id: "contacts", label: intl.formatMessage({ id: "contacts" }) },
+    { id: "home", label: intl.formatMessage({ id: "home" }), icon: <Home /> },
+    {
+      id: "works",
+      label: intl.formatMessage({ id: "works" }),
+      icon: <BriefcaseBusiness />,
+    },
+    {
+      id: "portfolio",
+      label: intl.formatMessage({ id: "portefolio" }),
+      icon: <Code />,
+    },
+    {
+      id: "contacts",
+      label: intl.formatMessage({ id: "contacts" }),
+      icon: <Contact />,
+    },
   ];
 
   const DesktopNavigation = () => (
-    <header className="w-full flex items-center p-4 lg:p-6">
-      <div className="flex items-center flex-1 lg:flex-none lg:mx-12">
+    <header className="w-full fixed top-0 left-0 z-50 flex items-center p-4 lg:p-6">
+      {/* Blurred background */}
+      <div
+        className="absolute inset-0 backdrop-blur-md bg-background/70 dark:bg-background/80"
+        aria-hidden="true"
+      />
+
+      <div className="relative flex items-center flex-1 lg:flex-none lg:mx-12">
         <img className="w-10 h-10 lg:w-12 lg:h-12" src="logo.png" alt="Logo" />
         <strong className="ml-3 text-lg lg:text-xl font-bold">#NYHASINA</strong>
       </div>
 
-      <div className="hidden lg:flex flex-1 justify-center">
+      <div className="relative hidden lg:flex flex-1 justify-center">
         <NavigationMenu>
           <NavigationMenuList className="flex gap-8 xl:gap-10">
             {navItems.map((item) => (
               <NavigationMenuItem key={item.id}>
-                <Button variant="ghost" className="text-base font-medium">
+                <Button
+                  variant="ghost"
+                  className="text-base font-medium hover:bg-primary/10 hover:backdrop-blur-sm transition-all"
+                >
+                  {item.icon}
                   {item.label}
                 </Button>
               </NavigationMenuItem>
@@ -64,12 +96,12 @@ export function NavigationMenuSection({
         </NavigationMenu>
       </div>
 
-      <div className="flex items-center justify-end flex-1 lg:flex-none lg:mx-12 gap-2">
+      <div className="relative flex items-center justify-end flex-1 lg:flex-none lg:mx-12 gap-2">
         <Button
           size="icon"
           variant="outline"
           onClick={() => setTheme(isDark ? "light" : "dark")}
-          className="rounded-full"
+          className="rounded-full backdrop-blur-sm bg-background/50 dark:bg-background/60 hover:bg-primary/10 hover:backdrop-blur-md transition-all"
           aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
         >
           {isDark ? <Sun size={20} /> : <Moon size={20} />}
@@ -80,7 +112,7 @@ export function NavigationMenuSection({
             size="icon"
             variant={intl.locale === "en" ? "default" : "outline"}
             onClick={() => setLocale("en")}
-            className="rounded-full"
+            className="rounded-full backdrop-blur-sm bg-background/50 dark:bg-background/60 hover:backdrop-blur-md transition-all"
             aria-label="Switch to English"
           >
             🇺🇸
@@ -89,7 +121,7 @@ export function NavigationMenuSection({
             size="icon"
             variant={intl.locale === "fr" ? "default" : "outline"}
             onClick={() => setLocale("fr")}
-            className="rounded-full"
+            className="rounded-full backdrop-blur-sm bg-background/50 dark:bg-background/60 hover:backdrop-blur-md transition-all"
             aria-label="Switch to French"
           >
             🇫🇷
@@ -100,8 +132,14 @@ export function NavigationMenuSection({
   );
 
   const MobileNavigation = () => (
-    <header className="w-full flex items-center justify-between p-4">
-      <div className="flex items-center">
+    <header className="w-full fixed top-0 left-0 z-50 flex items-center justify-between p-4">
+      {/* Blurred background for mobile header */}
+      <div
+        className="absolute inset-0 backdrop-blur-md bg-background/70 dark:bg-background/80"
+        aria-hidden="true"
+      />
+
+      <div className="relative flex items-center">
         <img className="w-10 h-10" src="logo.png" alt="Logo" />
         <strong className="ml-3 text-lg font-bold">#NYHASINA</strong>
       </div>
@@ -111,13 +149,16 @@ export function NavigationMenuSection({
           <Button
             variant="ghost"
             size="icon"
-            className="lg:hidden"
+            className="lg:hidden relative backdrop-blur-sm bg-background/50 dark:bg-background/60 hover:bg-primary/10 hover:backdrop-blur-md transition-all"
             aria-label="Open menu"
           >
             <Menu size={24} />
           </Button>
         </SheetTrigger>
-        <SheetContent side="right" className="w-[85vw] p-5 sm:w-[350px]">
+        <SheetContent
+          side="right"
+          className="w-[85vw] p-5 sm:w-[350px] backdrop-blur-xl bg-background/90 dark:bg-background/95"
+        >
           <SheetTitle></SheetTitle>
           <div className="flex flex-col h-full pt-6">
             <nav className="flex-1">
@@ -126,7 +167,7 @@ export function NavigationMenuSection({
                   <li key={item.id}>
                     <Button
                       variant="ghost"
-                      className="w-full justify-start text-lg py-6"
+                      className="w-full justify-start text-lg py-6 hover:bg-primary/10 hover:backdrop-blur-sm transition-all"
                     >
                       {item.label}
                     </Button>
@@ -135,7 +176,7 @@ export function NavigationMenuSection({
               </ul>
             </nav>
 
-            <div className="pt-6 border-t mt-6">
+            <div className="pt-6 border-t border-border/50 mt-6">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium">Theme</span>
@@ -143,7 +184,7 @@ export function NavigationMenuSection({
                     size="icon"
                     variant="outline"
                     onClick={() => setTheme(isDark ? "light" : "dark")}
-                    className="rounded-full"
+                    className="rounded-full backdrop-blur-sm bg-background/50 dark:bg-background/60 hover:backdrop-blur-md transition-all"
                   >
                     {isDark ? <Sun size={20} /> : <Moon size={20} />}
                   </Button>
@@ -163,7 +204,7 @@ export function NavigationMenuSection({
                       onClick={() => {
                         setLocale("en");
                       }}
-                      className="flex-1"
+                      className="flex-1 backdrop-blur-sm bg-background/50 dark:bg-background/60 hover:backdrop-blur-md transition-all"
                     >
                       <span className="mr-2">🇺🇸</span>
                     </Button>
@@ -172,7 +213,7 @@ export function NavigationMenuSection({
                       onClick={() => {
                         setLocale("fr");
                       }}
-                      className="flex-1"
+                      className="flex-1 backdrop-blur-sm bg-background/50 dark:bg-background/60 hover:backdrop-blur-md transition-all"
                     >
                       <span className="mr-2">🇫🇷</span>
                     </Button>

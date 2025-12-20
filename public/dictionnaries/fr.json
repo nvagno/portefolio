@@ -3,5 +3,14 @@
   "works": "Expériences",
   "portefolio": "Portefolio",
   "contacts": "Contacts",
-  "language": "Langage"
+  "language": "Langage",
+  "hello": "Bonjour 👋, je suis",
+  "engineer": "Ingénieur Logiciel",
+  "description": "Développeur logiciel passionné avec 3 ans d'expérience en développement Java/SpringBoot, systèmes d'IA géospatiale et architecture cloud.",
+  "speciality": "Spécialisé dans la conception d'APIs REST, le traitement d'images satellites, et le déploiement de microservices sur AWS.",
+  "cv": "Télécharger CV",
+  "comment1": "💡 Passionné par l'innovation",
+  "comment2": "🚀 Toujours en apprentissage",
+  "comment3": "🎯 Orienté solutions",
+  "comment4": "⚡ Code propre & efficace"
 }

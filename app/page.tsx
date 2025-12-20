@@ -1,6 +1,8 @@
 "use client";
 
+import { HeroSection } from "@/components/hero/hero";
 import { NavigationMenuSection } from "@/components/navigation/menu";
+import { Work } from "@/components/work/work";
 import en_message from "@/public/dictionnaries/en.json";
 import fr_message from "@/public/dictionnaries/fr.json";
 import { useState } from "react";
@@ -25,6 +27,7 @@ export default function Home() {
     <div>
       <IntlProvider locale={locale} messages={messages[locale]}>
         <NavigationMenuSection setLocale={setLocale} />
+        <HeroSection />
       </IntlProvider>
     </div>
   );
