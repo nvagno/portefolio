@@ -3,5 +3,14 @@
   "works": "Works",
   "portefolio": "Portefolio",
   "contacts": "Contacts",
-  "language": "Language"
+  "language": "Language",
+  "hello": "Hello 👋, I'm",
+  "engineer": "Software Engineer",
+  "description": "A passionate software developer with 3 years of experience in Java/SpringBoot development, geospatial AI systems, and cloud architecture.",
+  "speciality": "Specialized in designing RESTful APIs, processing satellite imagery, and deploying microservices on AWS.",
+  "cv": "Download CV",
+  "comment1": "💡 Passionate about innovation",
+  "comment2": "🚀 Always learning",
+  "comment3": "🎯 Solution-oriented",
+  "comment4": "⚡ Clean & efficient code"
 }
