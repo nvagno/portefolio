@@ -177,8 +177,9 @@ export function NavigationMenuSection({
                     <Button
                       variant="ghost"
                       className="w-full justify-start text-lg py-6 hover:bg-primary/10 hover:backdrop-blur-sm transition-all"
+                      onClick={() => setIsMenuOpen(false)}
                     >
-                      {item.label}
+                      <a href={item.link}>{item.label}</a>
                     </Button>
                   </li>
                 ))}
@@ -192,7 +193,10 @@ export function NavigationMenuSection({
                   <Button
                     size="icon"
                     variant="outline"
-                    onClick={() => setTheme(isDark ? "light" : "dark")}
+                    onClick={() => {
+                      setTheme(isDark ? "light" : "dark");
+                      setIsMenuOpen(false);
+                    }}
                     className="rounded-full backdrop-blur-sm bg-background/50 dark:bg-background/60 hover:backdrop-blur-md transition-all"
                   >
                     {isDark ? <Sun size={20} /> : <Moon size={20} />}
@@ -212,6 +216,7 @@ export function NavigationMenuSection({
                       variant={intl.locale === "en" ? "default" : "outline"}
                       onClick={() => {
                         setLocale("en");
+                        setIsMenuOpen(false);
                       }}
                       className="flex-1 backdrop-blur-sm bg-background/50 dark:bg-background/60 hover:backdrop-blur-md transition-all"
                     >
@@ -221,6 +226,7 @@ export function NavigationMenuSection({
                       variant={intl.locale === "fr" ? "default" : "outline"}
                       onClick={() => {
                         setLocale("fr");
+                        setIsMenuOpen(false);
                       }}
                       className="flex-1 backdrop-blur-sm bg-background/50 dark:bg-background/60 hover:backdrop-blur-md transition-all"
                     >
