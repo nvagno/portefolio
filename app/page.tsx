@@ -3,7 +3,7 @@
 import { ContactSection } from "@/components/contact/contact";
 import { HeroSection } from "@/components/hero/hero";
 import { NavigationMenuSection } from "@/components/navigation/menu";
-import { PortefolioSection } from "@/components/portefolio/portefolio";
+import { PortfolioSection } from "@/components/portfolio/portefolio";
 import { WorkSection } from "@/components/work/work";
 import en_message from "@/public/dictionnaries/en.json";
 import fr_message from "@/public/dictionnaries/fr.json";
@@ -31,7 +31,7 @@ export default function Home() {
         <NavigationMenuSection setLocale={setLocale} />
         <HeroSection />
         <WorkSection />
-        <PortefolioSection />
+        <PortfolioSection />
         <ContactSection />
       </IntlProvider>
     </div>

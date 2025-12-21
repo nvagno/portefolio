@@ -63,7 +63,7 @@ export function NavigationMenuSection({
       id: "portfolio",
       label: intl.formatMessage({ id: "portefolio" }),
       icon: <Code />,
-      link: "#portefolio",
+      link: "#portfolio",
     },
     {
       id: "contacts",
