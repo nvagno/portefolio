@@ -9,8 +9,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Github, MapPin, Calendar } from "lucide-react";
+import { useIntl } from "react-intl";
 
 export function WorkSection() {
+  const intl = useIntl();
+
   return (
     <section
       id="works"
@@ -33,11 +36,15 @@ export function WorkSection() {
             <CardHeader className="space-y-2 pb-6">
               <div className="inline-block">
                 <span className="text-xs font-bold uppercase tracking-widest px-3 py-1 bg-white text-black dark:bg-black dark:text-white">
-                  Experience
+                  {intl.formatMessage({
+                    id: "works",
+                  })}
                 </span>
               </div>
               <CardTitle className="text-2xl md:text-3xl dark:font-black font-white leading-tight dark:text-black text-white">
-                Java and AI Developer
+                {intl.formatMessage({
+                  id: "job",
+                })}
               </CardTitle>
             </CardHeader>
 
@@ -51,17 +58,20 @@ export function WorkSection() {
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-600">
                   <Calendar className="w-4 h-4" />
-                  <span>July 2022 – July 2025</span>
+                  <span>
+                    {intl.formatMessage({
+                      id: "date",
+                    })}
+                  </span>
                 </div>
               </div>
 
               <div className="h-px bg-black"></div>
 
               <CardDescription className="text-base leading-relaxed dark:text-gray-800 text-gray-500">
-                Contributed to the design and development of a French deep-tech
-                platform leveraging hybrid AI to transform ultra-high-resolution
-                aerial imagery into geospatial insights for insurance companies,
-                local authorities, and asset managers.
+                {intl.formatMessage({
+                  id: "contribution",
+                })}
               </CardDescription>
 
               <div className="flex flex-wrap gap-2">
@@ -89,7 +99,9 @@ export function WorkSection() {
               <Button className="w-full md:w-auto dark:bg-black bg-white dark:text-white text-black">
                 <Github className="w-5 h-5 mr-2" />
                 <a href="https://github.com/b-partners/bpartners-api">
-                  View on Github
+                  {intl.formatMessage({
+                    id: "source",
+                  })}
                 </a>
               </Button>
             </CardFooter>
