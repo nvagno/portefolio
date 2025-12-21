@@ -17,5 +17,9 @@
   "links": "LINKS",
   "phone": "Phone",
   "address": "Address",
-  "reserved": "All rights reserved"
+  "reserved": "All rights reserved",
+  "job": "Java and AI Developer",
+  "date": "July 2022 – July 2025",
+  "contribution": "Contributed to the design and development of a French deep-tech platform leveraging hybrid AI to transform ultra-high-resolution aerial imagery into geospatial insights for insurance companies,local authorities, and asset managers.",
+  "source": "View on Github"
 }
