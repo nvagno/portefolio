@@ -126,3 +126,21 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Smooth transitions for mobile */
+@media (max-width: 640px) {
+  .carousel-item {
+    transition: transform 0.3s ease;
+  }
+}
+
+/* Prevent text overflow on small devices */
+.truncate-mobile {
+  @media (max-width: 640px) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+}
