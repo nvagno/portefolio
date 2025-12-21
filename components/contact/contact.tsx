@@ -46,7 +46,7 @@ export function ContactSection() {
   ];
 
   return (
-    <footer id="contacts" className="bg-black py-12">
+    <footer id="contacts" className="dark:bg-white bg-black py-12">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div className="space-y-6">
@@ -57,10 +57,10 @@ export function ContactSection() {
                 alt="Logo"
               />
               <div>
-                <h2 className="text-2xl text-white font-bold">
+                <h2 className="text-2xl dark:text-black text-white font-bold">
                   Ny Hasina M. VAGNO
                 </h2>
-                <p className="text-sm text-slate-400">
+                <p className="text-sm text-slate-400 dark:text-slate-600">
                   {intl.formatMessage({
                     id: "engineer",
                   })}
@@ -69,7 +69,7 @@ export function ContactSection() {
             </div>
 
             <div>
-              <p className="text-sm text-slate-400 mb-3">
+              <p className="text-sm text-slate-400 mb-3 dark:text-slate-600">
                 {intl.formatMessage({
                   id: "follow",
                 })}
@@ -91,7 +91,7 @@ export function ContactSection() {
                     <Github className="w-5 h-5" />
                   </a>
                 </Button>
-                <Button size="icon" className="bg-slate-700 text-white">
+                <Button size="icon" className="bg-slate-700 text-white ">
                   <a
                     href="https://www.facebook.com/nyhasina.vagno/"
                     className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors"
@@ -104,7 +104,7 @@ export function ContactSection() {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-3 text-white">
+            <h3 className="text-lg font-semibold mb-3 text-white dark:text-black">
               {intl.formatMessage({
                 id: "links",
               })}
@@ -114,7 +114,7 @@ export function ContactSection() {
                 <li key={k}>
                   <a
                     href={item.link}
-                    className="text-slate-300 transition-colors flex items-center group"
+                    className="text-slate-300 dark:text-slate-600 transition-colors flex items-center group"
                   >
                     {item.label}
                   </a>
@@ -124,19 +124,23 @@ export function ContactSection() {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-6 text-white">CONTACTS</h3>
+            <h3 className="text-lg font-semibold mb-6 dark:text-black text-white">
+              CONTACTS
+            </h3>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
                 <Button size="icon" className="bg-slate-600 text-white">
                   <Phone className="w-5 h-5" />
                 </Button>
                 <div className="text-sm">
-                  <p className="text-slate-400 mb-1">
+                  <p className="text-slate-400 dark:text-slate-600 mb-1">
                     {intl.formatMessage({
                       id: "phone",
                     })}
                   </p>
-                  <p className="font-medium text-white">+262 693 42 80 16</p>
+                  <p className="font-medium text-white dark:text-black">
+                    +262 693 42 80 16
+                  </p>
                 </div>
               </div>
 
@@ -145,10 +149,12 @@ export function ContactSection() {
                   <Mail className="w-5 h-5" />
                 </Button>
                 <div className="text-sm">
-                  <p className="text-slate-400 mb-1">Email</p>
+                  <p className="text-slate-400 dark:text-slate-600 mb-1">
+                    Email
+                  </p>
                   <a
                     href="mailto:nyhasinavagno@gmail.com"
-                    className="font-medium transition-colors text-white"
+                    className="font-medium transition-colors text-white dark:text-black"
                   >
                     nyhasinavagno@gmail.com
                   </a>
@@ -160,12 +166,12 @@ export function ContactSection() {
                   <MapPin className="w-5 h-5" />
                 </Button>
                 <div className="text-sm">
-                  <p className="text-slate-400 mb-1">
+                  <p className="text-slate-400 mb-1 dark:text-slate-600">
                     {intl.formatMessage({
                       id: "address",
                     })}
                   </p>
-                  <p className="font-medium leading-relaxed text-white">
+                  <p className="font-medium leading-relaxed text-white dark:text-black">
                     14 Avenue Dr Jean-Marie Dambreville, 97410 Saint-Pierre, La
                     Réunion
                   </p>
@@ -176,7 +182,7 @@ export function ContactSection() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-slate-700 text-center">
-          <p className="text-slate-400 text-sm">
+          <p className="text-slate-400 dark:text-slate-600 text-sm">
             ©Ny Hasina M. VAGNO.{" "}
             {intl.formatMessage({
               id: "reserved",
