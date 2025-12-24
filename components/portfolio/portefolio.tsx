@@ -39,6 +39,31 @@ export function PortfolioSection() {
         id: "replate",
       }),
       technologies: ["Next.js", "Postgresql", "Mistral AI", "Tailwind"],
+      url: "https://github.com/nvagno/replate.git",
+    },
+    {
+      title: "Authentify",
+      img: "authentify.png",
+      description: intl.formatMessage({
+        id: "authentify",
+      }),
+      technologies: ["Springboot", "Docker", "TOTP", "Google Authenticator"],
+      url: "https://github.com/nvagno/authentify.git",
+    },
+    {
+      title: "Velib-Paris",
+      img: "velib.jpg",
+      description: intl.formatMessage({
+        id: "velib",
+      }),
+      technologies: [
+        "Next.js",
+        "Scikit-learn",
+        "Pandas",
+        "Matplotlib",
+        "Seaborn",
+      ],
+      url: "https://github.com/nvagno/velib-paris.git",
     },
     {
       title: "Re:Plate",
@@ -47,30 +72,25 @@ export function PortfolioSection() {
         id: "replate",
       }),
       technologies: ["Next.js", "Postgresql", "Mistral AI", "Tailwind"],
+      url: "https://github.com/nvagno/replate.git",
     },
     {
-      title: "Re:Plate",
-      img: "replate.png",
+      title: "Authentify",
+      img: "authentify.png",
+      description: intl.formatMessage({
+        id: "authentify",
+      }),
+      technologies: ["Springboot", "Docker", "TOTP", "Google Authenticator"],
+      url: "https://github.com/nvagno/authentify.git",
+    },
+    {
+      title: "Velib-Paris",
+      img: "velib.jpg",
       description: intl.formatMessage({
         id: "replate",
       }),
-      technologies: ["Next.js", "Postgresql", "Mistral AI", "Tailwind"],
-    },
-    {
-      title: "Re:Plate",
-      img: "replate.png",
-      description: intl.formatMessage({
-        id: "replate",
-      }),
-      technologies: ["Next.js", "Postgresql", "Mistral AI", "Tailwind"],
-    },
-    {
-      title: "Re:Plate",
-      img: "replate.png",
-      description: intl.formatMessage({
-        id: "replate",
-      }),
-      technologies: ["Next.js", "Postgresql", "Mistral AI", "Tailwind"],
+      technologies: ["Scikit-learn", "Pandas", "Matplotlib", "Seaborn"],
+      url: "https://github.com/nvagno/velib-paris.git",
     },
   ];
 
@@ -137,9 +157,11 @@ export function PortfolioSection() {
                     </Button>
                     <Button size="lg">
                       <Github />
-                      {intl.formatMessage({
-                        id: "source",
-                      })}
+                      <a href={pj.url}>
+                        {intl.formatMessage({
+                          id: "source",
+                        })}
+                      </a>
                     </Button>
                   </CardFooter>
                 </Card>

@@ -22,5 +22,7 @@
   "date": "July 2022 – July 2025",
   "contribution": "Contributed to the design and development of a French deep-tech platform leveraging hybrid AI to transform ultra-high-resolution aerial imagery into geospatial insights for insurance companies,local authorities, and asset managers.",
   "source": "View on Github",
-  "replate": "A platform powered by nutritional AI, offering simple, tasty, and balanced recipes tailored to the specific needs of people with diabetes."
+  "replate": "A platform powered by nutritional AI, offering simple, tasty, and balanced recipes tailored to the specific needs of people with diabetes.",
+  "authentify": "A secure authentication service built with Spring Boot, implementing JWT-based authentication with TOTP (Time-based One-Time Password) multi-factor authentication using Google Authenticator.",
+  "velib": "Development of a multi-target predictive model using Paris OpenData to forecast, in real time, the number of available bikes and free docking stations across bike-sharing stations."
 }

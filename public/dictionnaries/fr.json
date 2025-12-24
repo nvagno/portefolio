@@ -22,5 +22,7 @@
   "date": "juillet 2022 – juillet 2025",
   "contribution": "A contribué à la conception et au développement d’une plateforme deep-tech française exploitant une IA hybride pour transformer des images aériennes à ultra-haute résolution en informations géospatiales destinées aux compagnies d’assurance, aux collectivités locales et aux gestionnaires d’actifs.",
   "source": "Voir sur GitHub",
-  "replate": "Une plateforme propulsée par une IA nutritionnelle, proposant des recettes simples, savoureuses et équilibrées, adaptées aux besoins spécifiques des personnes diabétiques."
+  "replate": "Une plateforme propulsée par une IA nutritionnelle, proposant des recettes simples, savoureuses et équilibrées, adaptées aux besoins spécifiques des personnes diabétiques.",
+  "authentify": "Un service d’authentification sécurisé développé avec Spring Boot, mettant en œuvre une authentification basée sur JWT et une authentification multifacteur par mot de passe à usage unique basé sur le temps (TOTP), compatible avec Google Authenticator.",
+  "velib": "Développement d’un modèle prédictif multi-cibles exploitant des données OpenData (Paris) afin d’anticiper, en temps réel, le nombre de vélos disponibles et de bornes libres dans les stations de vélos en libre-service."
 }
