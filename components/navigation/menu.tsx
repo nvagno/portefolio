@@ -121,7 +121,7 @@ export function NavigationMenuSection({
             size="icon"
             variant={intl.locale === "en" ? "default" : "outline"}
             onClick={() => setLocale("en")}
-            className="rounded-full backdrop-blur-sm bg-background/50 dark:bg-background/60 hover:backdrop-blur-md transition-all"
+            className="rounded-full backdrop-blur-sm hover:backdrop-blur-md transition-all"
             aria-label="Switch to English"
           >
             🇺🇸
@@ -130,7 +130,7 @@ export function NavigationMenuSection({
             size="icon"
             variant={intl.locale === "fr" ? "default" : "outline"}
             onClick={() => setLocale("fr")}
-            className="rounded-full backdrop-blur-sm bg-background/50 dark:bg-background/60 hover:backdrop-blur-md transition-all"
+            className="rounded-full backdrop-blur-sm  hover:backdrop-blur-md transition-all"
             aria-label="Switch to French"
           >
             🇫🇷
@@ -218,7 +218,7 @@ export function NavigationMenuSection({
                         setLocale("en");
                         setIsMenuOpen(false);
                       }}
-                      className="flex-1 backdrop-blur-sm bg-background/50 dark:bg-background/60 hover:backdrop-blur-md transition-all"
+                      className="flex-1 backdrop-blur-sm hover:backdrop-blur-md transition-all"
                     >
                       <span className="mr-2">🇺🇸</span>
                     </Button>
@@ -228,7 +228,7 @@ export function NavigationMenuSection({
                         setLocale("fr");
                         setIsMenuOpen(false);
                       }}
-                      className="flex-1 backdrop-blur-sm bg-background/50 dark:bg-background/60 hover:backdrop-blur-md transition-all"
+                      className="flex-1 backdrop-blur-sm hover:backdrop-blur-md transition-all"
                     >
                       <span className="mr-2">🇫🇷</span>
                     </Button>
