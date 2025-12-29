@@ -87,7 +87,7 @@ export function PortfolioSection() {
       title: "Velib-Paris",
       img: "velib.jpg",
       description: intl.formatMessage({
-        id: "replate",
+        id: "velib",
       }),
       technologies: ["Scikit-learn", "Pandas", "Matplotlib", "Seaborn"],
       url: "https://github.com/nvagno/velib-paris.git",

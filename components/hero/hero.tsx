@@ -30,7 +30,9 @@ export function HeroSection() {
             </p>
             <Button size="lg" className="gap-2">
               <Download className="w-5 h-5" />
-              {intl.formatMessage({ id: "cv" })}
+              <a href="https://drive.google.com/uc?export=download&id=1y_TSi2fEqBxqHhBzKGbcrPQ1adlAIW3s">
+                {intl.formatMessage({ id: "cv" })}
+              </a>
             </Button>
           </div>
 
