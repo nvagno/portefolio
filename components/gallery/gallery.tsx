@@ -98,22 +98,22 @@ export default function PhotoGallery() {
       <style>{css}</style>
 
       <section
-        className="bg-[#0C0C0C] py-16 border-t border-[#1E1E1E]"
+        className="bg-[#0A1830] py-20 border-t border-[#16264A]"
         style={sans}
       >
         {/* Header */}
         <div className="max-w-6xl mx-auto px-6 md:px-10 mb-8">
           <div className="flex items-baseline justify-between mb-1">
-            <h2 className="text-[13px] font-normal text-[#D4D4D4]">
+            <h2 className="text-[13px] font-normal text-[#E7EEFC]">
               Behind the experience
             </h2>
 
-            <span className="text-[11px] text-[#3A3A3A]" style={mono}>
+            <span className="text-[11px] text-[#4A5D85]" style={mono}>
               {photos.length.toString().padStart(2, "0")} photos
             </span>
           </div>
 
-          <p className="text-[12px] font-light text-[#525252]">
+          <p className="text-[12px] font-light text-[#7488AC]">
             A selection of special moments
           </p>
         </div>
@@ -127,7 +127,7 @@ export default function PhotoGallery() {
             return (
               <div
                 key={photo.id}
-                className="relative shrink-0 w-[260px] h-[360px] overflow-hidden bg-[#141414]"
+                className="relative shrink-0 w-[260px] h-[360px] overflow-hidden bg-[#101F3D]"
                 onMouseEnter={() => setHovered(photo.id)}
                 onMouseLeave={() => setHovered(null)}
                 style={{
@@ -137,7 +137,7 @@ export default function PhotoGallery() {
               >
                 {/* Skeleton */}
                 {!loaded[photo.id] && (
-                  <div className="absolute inset-0 bg-[#141414]" />
+                  <div className="absolute inset-0 bg-[#101F3D]" />
                 )}
 
                 {/* IMAGE (OPTIMIZED) */}
@@ -154,7 +154,7 @@ export default function PhotoGallery() {
 
                 {/* Label */}
                 <div
-                  className="absolute bottom-0 left-0 right-0 px-4 py-3 border-t border-[#1E1E1E] bg-[#0C0C0C]"
+                  className="absolute bottom-0 left-0 right-0 px-4 py-3 border-t border-[#16264A] bg-[#0A1830]"
                   style={{
                     opacity: isHovered ? 1 : 0,
                     transform: isHovered ? "translateY(0)" : "translateY(4px)",
@@ -162,13 +162,13 @@ export default function PhotoGallery() {
                   }}
                 >
                   <span
-                    className="text-[10px] text-[#3A3A3A] mr-3"
+                    className="text-[10px] text-[#4A5D85] mr-3"
                     style={mono}
                   >
                     {String(photo.id).padStart(2, "0")}
                   </span>
 
-                  <span className="text-[12px] text-[#D4D4D4]">
+                  <span className="text-[12px] text-[#E7EEFC]">
                     {photo.label}
                   </span>
                 </div>
@@ -185,7 +185,7 @@ export default function PhotoGallery() {
               className="h-px transition-all duration-200"
               style={{
                 width: hovered === p.id ? "20px" : "8px",
-                background: hovered === p.id ? "#525252" : "#1E1E1E",
+                background: hovered === p.id ? "#2563EB" : "#16264A",
               }}
             />
           ))}

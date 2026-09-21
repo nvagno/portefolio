@@ -13,12 +13,11 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const getNavItems = (intl: any): NavItem[] => [
-  { id: "home", label: intl.formatMessage({ id: "home" }), link: "/" },
-  { id: "resume", label: intl.formatMessage({ id: "cv" }), link: "/resume" },
+  { id: "home", label: intl.formatMessage({ id: "home" }), link: "#home" },
   {
-    id: "blog",
-    label: intl.formatMessage({ id: "project" }),
-    link: "/projects",
+    id: "experience",
+    label: intl.formatMessage({ id: "experience" }),
+    link: "#experience",
   },
   {
     id: "contacts",

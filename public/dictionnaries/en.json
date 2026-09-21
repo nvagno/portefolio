@@ -1,7 +1,7 @@
 {
   "home": "Home",
+  "about": "About",
   "experience": "Experience",
-  "project": "Projects",
   "contacts": "Contacts",
   "language": "Language",
   "availability": "Currently available for new projects",
@@ -9,7 +9,6 @@
   "engineer": "Software engineer & Research Apprentice",
   "description": "Combining software development expertise with research curiosity to create technology-driven solutions and advance knowledge in computing and innovation.",
   "speciality": "I am currently working on a smart farming solution for yield estimation, leveraging technology and data-driven approaches to improve agricultural productivity and decision-making",
-  "cv": "Resume",
   "comment1": "Passionate about innovation",
   "comment2": "Always learning",
   "comment3": "Solution-oriented",

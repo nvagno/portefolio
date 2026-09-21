@@ -6,15 +6,8 @@ const mono = { fontFamily: "'IBM Plex Mono', monospace" } as const;
 
 const css = `
   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@300;400&display=swap');
-  .social-a { color: #A8A8A5; transition: color 200ms; }
-  .social-a:hover { color: #1C1C1A; }
-  .project-card {
-    border: 1px solid #E5E4E0;
-    padding: 16px;
-    background: #fff;
-    transition: border-color 200ms;
-  }
-  .project-card:hover { border-color: #A8A8A5; }
+  .social-a { color: #8CA0C4; transition: color 200ms; }
+  .social-a:hover { color: #2563EB; }
 `;
 
 interface SocialLink {
@@ -68,8 +61,8 @@ export function HeroSection() {
     <>
       <style>{css}</style>
 
-      <main id="home" className="bg-[#F7F7F5]" style={sans}>
-        <div className="max-w-6xl mx-auto px-6 md:px-10 pt-28 pb-20">
+      <main id="home" className="bg-white" style={sans}>
+        <div className="max-w-6xl mx-auto px-6 md:px-10 py-20">
           {/* ── Hero grid ────────────────────────────── */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-start mb-16">
             {/* Photo */}
@@ -85,32 +78,32 @@ export function HeroSection() {
             <div className="order-2 space-y-6">
               <div>
                 <p
-                  className="text-[11px] text-[#A8A8A5] tracking-[0.08em] uppercase mb-2"
+                  className="text-[11px] text-[#8CA0C4] tracking-[0.08em] uppercase mb-2"
                   style={mono}
                 >
                   {intl.formatMessage({ id: "hello" })}
                 </p>
                 <h1
-                  className="text-3xl md:text-4xl font-normal text-[#1C1C1A] leading-snug"
+                  className="text-3xl md:text-4xl font-normal text-[#0F2A4D] leading-snug"
                   style={sans}
                 >
                   Ny Hasina M. VAGNO
                 </h1>
                 <p
-                  className="text-[12px] text-[#6B6B68] tracking-[0.05em] mt-1"
+                  className="text-[12px] text-[#2563EB] tracking-[0.05em] mt-1"
                   style={mono}
                 >
                   {intl.formatMessage({ id: "engineer" })}
                 </p>
               </div>
 
-              <div className="border-t border-[#E5E4E0]" />
+              <div className="border-t border-[#D9E4F5]" />
 
               <div className="space-y-3">
-                <p className="text-[13px] font-light leading-relaxed text-[#6B6B68]">
+                <p className="text-[13px] font-light leading-relaxed text-[#4F6488]">
                   {intl.formatMessage({ id: "description" })}
                 </p>
-                <p className="text-[13px] font-light leading-relaxed text-[#6B6B68]">
+                <p className="text-[13px] font-light leading-relaxed text-[#4F6488]">
                   {intl.formatMessage({ id: "speciality" })}
                 </p>
               </div>
@@ -120,7 +113,7 @@ export function HeroSection() {
                 {comments.map((c) => (
                   <span
                     key={c}
-                    className="text-[11px] text-[#6B6B68] border border-[#E5E4E0] px-3 py-1 bg-white"
+                    className="text-[11px] text-[#4F6488] border border-[#D9E4F5] px-3 py-1 bg-white"
                     style={sans}
                   >
                     {c}
@@ -131,7 +124,7 @@ export function HeroSection() {
               {/* Socials */}
               <div className="flex items-center gap-5 text-[15px] pt-1">
                 <span
-                  className="text-[11px] text-[#A8A8A5] tracking-[0.05em]"
+                  className="text-[11px] text-[#8CA0C4] tracking-[0.05em]"
                   style={mono}
                 >
                   {intl.formatMessage({ id: "follow" })}
