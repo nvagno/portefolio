@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Questrial&display=swap");
 
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -127,6 +127,15 @@
   body {
     @apply bg-background text-foreground font-sans;
   }
+}
+
+/* Body copy style */
+.content-text {
+  font-family: "Questrial", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 23.8px;
+  color: rgb(110, 110, 110);
 }
 
 /* Smooth transitions for mobile */

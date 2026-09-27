@@ -100,10 +100,10 @@ export function HeroSection() {
               <div className="border-t border-[#D9E4F5]" />
 
               <div className="space-y-3">
-                <p className="text-[13px] font-light leading-relaxed text-[#4F6488]">
+                <p className="content-text">
                   {intl.formatMessage({ id: "description" })}
                 </p>
-                <p className="text-[13px] font-light leading-relaxed text-[#4F6488]">
+                <p className="content-text">
                   {intl.formatMessage({ id: "speciality" })}
                 </p>
               </div>

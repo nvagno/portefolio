@@ -76,7 +76,10 @@ export function ExperienceSection() {
     if (!track) return;
     const card = track.children[index] as HTMLElement | undefined;
     if (!card) return;
-    track.scrollTo({ left: card.offsetLeft - track.offsetLeft, behavior: "smooth" });
+    track.scrollTo({
+      left: card.offsetLeft - track.offsetLeft,
+      behavior: "smooth",
+    });
     setActive(index);
   };
 
@@ -90,7 +93,9 @@ export function ExperienceSection() {
     let closestDist = Infinity;
     Array.from(track.children).forEach((child, i) => {
       const el = child as HTMLElement;
-      const dist = Math.abs(el.offsetLeft - track.offsetLeft - track.scrollLeft);
+      const dist = Math.abs(
+        el.offsetLeft - track.offsetLeft - track.scrollLeft,
+      );
       if (dist < closestDist) {
         closestDist = dist;
         closest = i;
@@ -120,7 +125,8 @@ export function ExperienceSection() {
     const onMove = (e: MouseEvent) => {
       if (!isDown) return;
       e.preventDefault();
-      track.scrollLeft = scrollLeft - (e.pageX - track.offsetLeft - startX) * 1.2;
+      track.scrollLeft =
+        scrollLeft - (e.pageX - track.offsetLeft - startX) * 1.2;
     };
 
     track.addEventListener("mousedown", onDown);
@@ -191,7 +197,12 @@ export function ExperienceSection() {
           >
             <div className="flex items-start justify-between mb-6">
               <div className="w-12 h-12 relative shrink-0 overflow-hidden">
-                <Image src={job.logo} alt={`${job.org} logo`} fill sizes="48px" />
+                <Image
+                  src={job.logo}
+                  alt={`${job.org} logo`}
+                  fill
+                  sizes="48px"
+                />
               </div>
               <p className="text-[11px] text-[#8CA0C4] text-right" style={mono}>
                 {job.period}
@@ -208,10 +219,7 @@ export function ExperienceSection() {
 
             <ul className="space-y-2">
               {job.bullets.map((b) => (
-                <li
-                  key={b}
-                  className="text-[13px] text-[#4F6488] leading-relaxed flex gap-2"
-                >
+                <li key={b} className="content-text flex gap-2">
                   <span className="text-[#2563EB]">—</span>
                   <span>{b}</span>
                 </li>
