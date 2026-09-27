@@ -22,7 +22,7 @@ const jobs: Job[] = [
   {
     role: "Research Intern",
     org: "GRC (UPV)",
-    logo: "/logos/grc.svg",
+    logo: "/logo-grc.png",
     location: "Valencia, Spain",
     period: "Apr. 2026 – Aug. 2026",
     bullets: [
@@ -35,7 +35,7 @@ const jobs: Job[] = [
   {
     role: "Teaching Assistant",
     org: "HEI",
-    logo: "/logos/hei.svg",
+    logo: "/logo-hei.png",
     location: "Antananarivo, Madagascar",
     period: "2024 – 2025",
     bullets: [
@@ -47,7 +47,7 @@ const jobs: Job[] = [
   {
     role: "Software Developer",
     org: "Numer",
-    logo: "/logos/numer.svg",
+    logo: "/logo-numer.png",
     location: "Antananarivo, Madagascar",
     period: "2022 – 2025",
     bullets: [
@@ -76,12 +76,13 @@ export function ExperienceSection() {
                 key={job.org}
                 className="logo-tile bg-white rounded-2xl px-3 py-5 sm:px-8 sm:py-6 flex flex-col items-center gap-3 sm:w-[180px]"
               >
-                <div className="w-16 h-16 relative rounded-xl overflow-hidden">
+                <div className="w-full sm:w-28 h-16 relative">
                   <Image
                     src={job.logo}
                     alt={`${job.org} logo`}
                     fill
-                    sizes="64px"
+                    sizes="112px"
+                    className="object-contain"
                   />
                 </div>
                 <span className="font-[Poppins] font-semibold text-[14px] text-[var(--ink)]">
@@ -108,12 +109,13 @@ export function ExperienceSection() {
                 className="exp-card bg-white rounded-3xl border border-[var(--line)] p-8 flex flex-col"
               >
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-14 h-14 relative shrink-0 rounded-2xl overflow-hidden">
+                  <div className="w-20 h-14 relative shrink-0">
                     <Image
                       src={job.logo}
                       alt={`${job.org} logo`}
                       fill
-                      sizes="56px"
+                      sizes="80px"
+                      className="object-contain"
                     />
                   </div>
                   <div>
