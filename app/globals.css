@@ -129,6 +129,63 @@
   }
 }
 
+/* Numer-inspired palette */
+:root {
+  --brand: #533598;
+  --brand-2: #3940b2;
+  --brand-accent: #9933cc;
+  --brand-soft: #f5f4fa;
+  --brand-dark: #16163f;
+  --ink: #333941;
+  --line: #e2e2e2;
+}
+
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 100px;
+  padding: 12px 28px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  transition:
+    background 200ms,
+    color 200ms,
+    border-color 200ms,
+    transform 200ms;
+}
+.btn-pill:hover {
+  transform: translateY(-1px);
+}
+.btn-primary {
+  background: var(--brand);
+  color: #fff;
+  border: 2px solid var(--brand);
+}
+.btn-primary:hover {
+  background: var(--brand-2);
+  border-color: var(--brand-2);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--brand);
+  border: 2px solid var(--brand);
+}
+.btn-outline:hover {
+  background: var(--brand);
+  color: #fff;
+}
+
+.eyebrow {
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand-accent);
+}
+
 /* Section title style */
 .title-text {
   font-family: "Poppins", sans-serif;

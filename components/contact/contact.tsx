@@ -1,15 +1,16 @@
 import { getNavItems, socials } from "@/lib/utils";
 import { useIntl } from "react-intl";
 
-const sans = { fontFamily: "'IBM Plex Sans', sans-serif" } as const;
-const mono = { fontFamily: "'IBM Plex Mono', monospace" } as const;
-
 const css = `
-  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@300;400&display=swap');
-  .footer-a { color: #A8A8A5; font-size: 12px; letter-spacing: 0.03em; text-decoration: none; transition: color 200ms; }
-  .footer-a:hover { color: #1C1C1A; }
-  .social-sm { color: #D4D4D1; transition: color 200ms; }
-  .social-sm:hover { color: #1C1C1A; }
+  .footer-a { color: rgba(255,255,255,0.7); font-family: "Questrial", sans-serif; font-size: 15px; transition: color 200ms; }
+  .footer-a:hover { color: #fff; }
+  .social-sm {
+    width: 40px; height: 40px; border-radius: 100px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: #fff; background: rgba(255,255,255,0.08);
+    transition: background 200ms;
+  }
+  .social-sm:hover { background: var(--brand-accent); }
 `;
 
 export function ContactSection() {
@@ -19,43 +20,49 @@ export function ContactSection() {
     <>
       <style>{css}</style>
 
-      <footer
-        id="contacts"
-        className="bg-[#F7F7F5] border-t border-[#E5E4E0]"
-        style={sans}
-      >
-        <div className="max-w-6xl mx-auto px-6 md:px-10 py-10">
-          {/* Main row */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <footer id="contacts" className="bg-[var(--brand-dark)] text-white">
+        {/* CTA banner */}
+        <div className="max-w-6xl mx-auto px-6 md:px-10 pt-20">
+          <div className="rounded-3xl bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] px-8 py-12 md:px-14 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div>
+              <h2 className="font-[Poppins] font-bold text-[28px] md:text-[36px] leading-tight">
+                Let&apos;s work together!
+              </h2>
+              <p className="font-[Questrial] text-[16px] text-white/80 mt-2">
+                {intl.formatMessage({ id: "engineer" })}
+              </p>
+            </div>
+            <a
+              href="https://www.linkedin.com/in/ny-hasina-marolahy-vagno-7a34b6227/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-pill bg-white text-[var(--brand)] self-start md:self-auto"
+            >
+              Get in touch
+            </a>
+          </div>
+        </div>
+
+        <div className="max-w-6xl mx-auto px-6 md:px-10 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
             {/* Identity */}
             <div>
-              <p className="text-[13px] text-[#1C1C1A] mb-1" style={mono}>
-                nhm.vagno
+              <p className="font-[Poppins] font-bold text-[22px] mb-2">
+                nhm<span className="text-[var(--brand-accent)]">.</span>vagno
               </p>
-              <p
-                className="text-[11px] text-[#A8A8A5] leading-relaxed mb-4"
-                style={sans}
-              >
-                {intl.formatMessage({ id: "engineer" })}
+              <p className="font-[Questrial] text-[15px] text-white/60 leading-relaxed">
+                {intl.formatMessage({ id: "description" })}
               </p>
             </div>
 
             {/* Navigation */}
             <div>
-              <p
-                className="text-[10px] text-[#A8A8A5] tracking-[0.08em] uppercase mb-4"
-                style={mono}
-              >
+              <p className="font-[Poppins] font-semibold text-[16px] mb-5">
                 {intl.formatMessage({ id: "links" })}
               </p>
               <nav className="flex flex-col gap-3">
                 {getNavItems(intl).map((item) => (
-                  <a
-                    key={item.id}
-                    href={item.link}
-                    className="footer-a"
-                    style={sans}
-                  >
+                  <a key={item.id} href={item.link} className="footer-a">
                     {item.label}
                   </a>
                 ))}
@@ -64,13 +71,10 @@ export function ContactSection() {
 
             {/* Follow */}
             <div>
-              <p
-                className="text-[10px] text-[#A8A8A5] tracking-[0.08em] uppercase mb-4"
-                style={mono}
-              >
+              <p className="font-[Poppins] font-semibold text-[16px] mb-5">
                 {intl.formatMessage({ id: "follow" })}
               </p>
-              <div className="flex items-center gap-4 text-[16px]">
+              <div className="flex items-center gap-3 text-[16px]">
                 {socials.map(({ href, label, icon }) => (
                   <a
                     key={href}
@@ -88,8 +92,8 @@ export function ContactSection() {
           </div>
 
           {/* Bottom bar */}
-          <div className="border-t border-[#E5E4E0] pt-6 flex flex-col md:flex-row items-center justify-between gap-3">
-            <p className="text-[11px] text-[#A8A8A5]" style={mono}>
+          <div className="border-t border-white/10 pt-6">
+            <p className="font-[Questrial] text-[13px] text-white/50">
               © {new Date().getFullYear()} Ny Hasina M. VAGNO —{" "}
               {intl.formatMessage({ id: "reserved" })}
             </p>

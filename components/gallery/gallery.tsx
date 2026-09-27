@@ -1,11 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
-const sans = { fontFamily: "'IBM Plex Sans', sans-serif" } as const;
-const mono = { fontFamily: "'IBM Plex Mono', monospace" } as const;
-
 const css = `
-  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@300;400&display=swap');
   .track { overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none; cursor: grab; }
   .track::-webkit-scrollbar { display: none; }
   .track:active { cursor: grabbing; }
@@ -97,98 +93,63 @@ export default function PhotoGallery() {
     <>
       <style>{css}</style>
 
-      <section
-        className="bg-[#0A1830] py-20 border-t border-[#16264A]"
-        style={sans}
-      >
+      <section className="bg-[var(--brand-soft)] py-24">
         {/* Header */}
-        <div className="max-w-6xl mx-auto px-6 md:px-10 mb-8">
-          <div className="flex items-baseline justify-between mb-1">
-            <h2 className="text-[13px] font-normal text-[#E7EEFC]">
-              Behind the experience
-            </h2>
-
-            <span className="text-[11px] text-[#4A5D85]" style={mono}>
+        <div className="max-w-6xl mx-auto px-6 md:px-10 mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+          <div>
+            <p className="eyebrow mb-3">
               {photos.length.toString().padStart(2, "0")} photos
-            </span>
+            </p>
+            <h2 className="title-text">Behind the experience</h2>
+            <p className="content-text mt-2">A selection of special moments</p>
           </div>
-
-          <p className="text-[12px] font-light text-[#7488AC]">
-            A selection of special moments
-          </p>
         </div>
 
         {/* Track */}
-        <div ref={trackRef} className="track flex gap-3 px-6 md:px-10">
+        <div
+          ref={trackRef}
+          className="track flex gap-6 px-6 md:px-10 max-w-6xl mx-auto"
+        >
           {photos.map((photo) => {
             const isHovered = hovered === photo.id;
-            const isDimmed = hovered !== null && !isHovered;
 
             return (
               <div
                 key={photo.id}
-                className="relative shrink-0 w-[260px] h-[360px] overflow-hidden bg-[#101F3D]"
+                className="relative shrink-0 w-[260px] h-[360px] overflow-hidden rounded-3xl bg-white shadow-md"
                 onMouseEnter={() => setHovered(photo.id)}
                 onMouseLeave={() => setHovered(null)}
-                style={{
-                  opacity: isDimmed ? 0.35 : 1,
-                  transition: "opacity 200ms ease",
-                }}
               >
                 {/* Skeleton */}
                 {!loaded[photo.id] && (
-                  <div className="absolute inset-0 bg-[#101F3D]" />
+                  <div className="absolute inset-0 bg-[#E4E0F2] animate-pulse" />
                 )}
 
-                {/* IMAGE (OPTIMIZED) */}
                 <Image
                   src={photo.src}
                   alt={photo.alt}
                   fill
+                  sizes="260px"
                   onLoad={() => handleLoad(photo.id)}
                   className="object-cover"
                   style={{
-                    transition: "opacity 300ms ease",
+                    transform: isHovered ? "scale(1.06)" : "scale(1)",
+                    transition: "transform 400ms ease",
                   }}
                 />
 
                 {/* Label */}
-                <div
-                  className="absolute bottom-0 left-0 right-0 px-4 py-3 border-t border-[#16264A] bg-[#0A1830]"
-                  style={{
-                    opacity: isHovered ? 1 : 0,
-                    transform: isHovered ? "translateY(0)" : "translateY(4px)",
-                    transition: "opacity 200ms ease, transform 200ms ease",
-                  }}
-                >
-                  <span
-                    className="text-[10px] text-[#4A5D85] mr-3"
-                    style={mono}
-                  >
-                    {String(photo.id).padStart(2, "0")}
-                  </span>
-
-                  <span className="text-[12px] text-[#E7EEFC]">
+                <div className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-[var(--brand-dark)]/90 to-transparent">
+                  <span className="block font-[Poppins] font-semibold text-[15px] text-white">
                     {photo.label}
+                  </span>
+                  <span className="block font-[Questrial] text-[13px] text-white/70">
+                    {photo.alt}
                   </span>
                 </div>
               </div>
             );
           })}
-        </div>
-
-        {/* Indicators */}
-        <div className="flex items-center gap-2 px-6 md:px-10 mt-5">
-          {photos.map((p) => (
-            <div
-              key={p.id}
-              className="h-px transition-all duration-200"
-              style={{
-                width: hovered === p.id ? "20px" : "8px",
-                background: hovered === p.id ? "#2563EB" : "#16264A",
-              }}
-            />
-          ))}
         </div>
       </section>
     </>

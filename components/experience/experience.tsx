@@ -1,18 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-const sans = { fontFamily: "'IBM Plex Sans', sans-serif" } as const;
-const mono = { fontFamily: "'IBM Plex Mono', monospace" } as const;
-
 const css = `
-  .exp-track { overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none; cursor: grab; scroll-snap-type: x proximity; }
-  .exp-track::-webkit-scrollbar { display: none; }
-  .exp-track:active { cursor: grabbing; }
-  .exp-card { scroll-snap-align: start; }
-  .exp-nav-btn { transition: border-color 200ms, color 200ms; }
-  .exp-nav-btn:hover { border-color: #2563EB; color: #2563EB; }
+  .exp-card { transition: transform 250ms ease, box-shadow 250ms ease; }
+  .exp-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px -16px rgba(83, 53, 152, 0.25); }
+  .logo-tile { transition: transform 250ms ease, box-shadow 250ms ease; }
+  .logo-tile:hover { transform: translateY(-4px); box-shadow: 0 16px 32px -12px rgba(83, 53, 152, 0.25); }
 `;
 
 interface Job {
@@ -68,182 +62,90 @@ const jobs: Job[] = [
 ];
 
 export function ExperienceSection() {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(0);
-
-  const scrollToIndex = (index: number) => {
-    const track = trackRef.current;
-    if (!track) return;
-    const card = track.children[index] as HTMLElement | undefined;
-    if (!card) return;
-    track.scrollTo({
-      left: card.offsetLeft - track.offsetLeft,
-      behavior: "smooth",
-    });
-    setActive(index);
-  };
-
-  const handlePrev = () => scrollToIndex(Math.max(active - 1, 0));
-  const handleNext = () => scrollToIndex(Math.min(active + 1, jobs.length - 1));
-
-  const handleScroll = () => {
-    const track = trackRef.current;
-    if (!track) return;
-    let closest = 0;
-    let closestDist = Infinity;
-    Array.from(track.children).forEach((child, i) => {
-      const el = child as HTMLElement;
-      const dist = Math.abs(
-        el.offsetLeft - track.offsetLeft - track.scrollLeft,
-      );
-      if (dist < closestDist) {
-        closestDist = dist;
-        closest = i;
-      }
-    });
-    setActive(closest);
-  };
-
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    let isDown = false;
-    let startX = 0;
-    let scrollLeft = 0;
-
-    const onDown = (e: MouseEvent) => {
-      isDown = true;
-      startX = e.pageX - track.offsetLeft;
-      scrollLeft = track.scrollLeft;
-    };
-
-    const onUp = () => {
-      isDown = false;
-    };
-
-    const onMove = (e: MouseEvent) => {
-      if (!isDown) return;
-      e.preventDefault();
-      track.scrollLeft =
-        scrollLeft - (e.pageX - track.offsetLeft - startX) * 1.2;
-    };
-
-    track.addEventListener("mousedown", onDown);
-    window.addEventListener("mouseup", onUp);
-    track.addEventListener("mousemove", onMove);
-
-    return () => {
-      track.removeEventListener("mousedown", onDown);
-      window.removeEventListener("mouseup", onUp);
-      track.removeEventListener("mousemove", onMove);
-    };
-  }, []);
-
   return (
-    <section
-      id="experience"
-      className="bg-[#EEF3FC] border-t border-[#D9E4F5]"
-      style={sans}
-    >
+    <>
       <style>{css}</style>
 
-      <div className="max-w-6xl mx-auto px-6 md:px-10 pt-20">
-        <div className="flex items-end justify-between mb-12">
-          <div>
-            <p
-              className="text-[11px] text-[#8CA0C4] tracking-[0.08em] uppercase mb-2"
-              style={mono}
-            >
-              Collaborations
-            </p>
+      {/* Companies strip */}
+      <section className="bg-[var(--brand-soft)] py-16">
+        <div className="max-w-6xl mx-auto px-6 md:px-10 text-center">
+          <p className="eyebrow mb-8">They trusted me</p>
+          <div className="grid grid-cols-3 gap-3 sm:flex sm:justify-center sm:gap-6">
+            {jobs.map((job) => (
+              <div
+                key={job.org}
+                className="logo-tile bg-white rounded-2xl px-3 py-5 sm:px-8 sm:py-6 flex flex-col items-center gap-3 sm:w-[180px]"
+              >
+                <div className="w-16 h-16 relative rounded-xl overflow-hidden">
+                  <Image
+                    src={job.logo}
+                    alt={`${job.org} logo`}
+                    fill
+                    sizes="64px"
+                  />
+                </div>
+                <span className="font-[Poppins] font-semibold text-[14px] text-[var(--ink)]">
+                  {job.org}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Experience cards */}
+      <section id="experience" className="bg-white py-24">
+        <div className="max-w-6xl mx-auto px-6 md:px-10">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <p className="eyebrow mb-3">Collaborations</p>
             <h2 className="title-text">Professional Experience</h2>
           </div>
 
-          <div className="hidden sm:flex items-center gap-2">
-            <button
-              type="button"
-              onClick={handlePrev}
-              aria-label="Previous"
-              className="exp-nav-btn w-9 h-9 flex items-center justify-center border border-[#D9E4F5] text-[#8CA0C4]"
-              style={mono}
-            >
-              ←
-            </button>
-            <button
-              type="button"
-              onClick={handleNext}
-              aria-label="Next"
-              className="exp-nav-btn w-9 h-9 flex items-center justify-center border border-[#D9E4F5] text-[#8CA0C4]"
-              style={mono}
-            >
-              →
-            </button>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {jobs.map((job) => (
+              <article
+                key={job.role + job.org}
+                className="exp-card bg-white rounded-3xl border border-[var(--line)] p-8 flex flex-col"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-14 h-14 relative shrink-0 rounded-2xl overflow-hidden">
+                    <Image
+                      src={job.logo}
+                      alt={`${job.org} logo`}
+                      fill
+                      sizes="56px"
+                    />
+                  </div>
+                  <div>
+                    <p className="font-[Poppins] font-semibold text-[15px] text-[var(--brand)]">
+                      {job.org}
+                    </p>
+                    <p className="font-[Questrial] text-[13px] text-[#8F8F8F]">
+                      {job.location}
+                    </p>
+                  </div>
+                </div>
+
+                <h3 className="font-[Poppins] font-bold text-[22px] leading-tight text-[var(--ink)]">
+                  {job.role}
+                </h3>
+                <span className="self-start mt-3 mb-6 font-[Questrial] text-[13px] text-[var(--brand)] bg-[var(--brand-soft)] rounded-full px-4 py-1">
+                  {job.period}
+                </span>
+
+                <ul className="space-y-3">
+                  {job.bullets.map((b) => (
+                    <li key={b} className="content-text flex gap-3">
+                      <span className="mt-[9px] w-1.5 h-1.5 shrink-0 rounded-full bg-[var(--brand-accent)]" />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
           </div>
         </div>
-      </div>
-
-      <div
-        ref={trackRef}
-        onScroll={handleScroll}
-        className="exp-track flex gap-5 px-6 md:px-10 max-w-6xl mx-auto pb-2"
-      >
-        {jobs.map((job) => (
-          <div
-            key={job.role + job.org}
-            className="exp-card shrink-0 w-[300px] sm:w-[360px] bg-white border border-[#D9E4F5] p-6 flex flex-col"
-          >
-            <div className="flex items-start justify-between mb-6">
-              <div className="w-12 h-12 relative shrink-0 overflow-hidden">
-                <Image
-                  src={job.logo}
-                  alt={`${job.org} logo`}
-                  fill
-                  sizes="48px"
-                />
-              </div>
-              <p className="text-[11px] text-[#8CA0C4] text-right" style={mono}>
-                {job.period}
-              </p>
-            </div>
-
-            <h3 className="text-[15px] font-medium text-[#0F2A4D]">
-              {job.role}
-            </h3>
-            <p className="text-[13px] text-[#4F6488] mt-1">{job.org}</p>
-            <p className="text-[12px] text-[#8CA0C4] mt-1 mb-5">
-              {job.location}
-            </p>
-
-            <ul className="space-y-2">
-              {job.bullets.map((b) => (
-                <li key={b} className="content-text flex gap-2">
-                  <span className="text-[#2563EB]">—</span>
-                  <span>{b}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-
-      <div className="max-w-6xl mx-auto px-6 md:px-10 pb-20">
-        <div className="flex items-center gap-2 mt-6">
-          {jobs.map((job, i) => (
-            <button
-              key={job.role + job.org}
-              type="button"
-              aria-label={`Go to ${job.org}`}
-              onClick={() => scrollToIndex(i)}
-              className="h-px transition-all duration-200"
-              style={{
-                width: active === i ? "20px" : "8px",
-                background: active === i ? "#2563EB" : "#D9E4F5",
-              }}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

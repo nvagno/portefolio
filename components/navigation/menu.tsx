@@ -8,31 +8,30 @@ import { useIntl } from "react-intl";
 import { useMobile } from "@/hooks/use-mobile";
 import { cn, getNavItems } from "@/lib/utils";
 
-const sans = { fontFamily: "'IBM Plex Sans', sans-serif" } as const;
-const mono = { fontFamily: "'IBM Plex Mono', monospace" } as const;
-
 const css = `
-  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@300;400&display=swap');
   .nav-a {
-    color: #A8A8A5;
-    font-size: 12px;
-    letter-spacing: 0.04em;
-    text-decoration: none;
+    color: var(--ink);
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
     transition: color 200ms;
   }
-  .nav-a:hover { color: #1C1C1A; }
+  .nav-a:hover { color: var(--brand); }
   .lang-btn {
     background: none; border: none; cursor: pointer; padding: 0;
-    font-size: 11px; letter-spacing: 0.06em;
-    color: #A8A8A5; transition: color 200ms;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px; font-weight: 600;
+    color: #8F8F8F; transition: color 200ms;
   }
-  .lang-btn:hover, .lang-btn.on { color: #1C1C1A; }
+  .lang-btn:hover, .lang-btn.on { color: var(--brand); }
+  .lang-btn:disabled { cursor: not-allowed; opacity: 0.5; }
   .mobile-a {
     display: flex; align-items: center; gap: 16px;
-    color: #A8A8A5; font-size: 13px; letter-spacing: 0.03em;
-    text-decoration: none; transition: color 200ms;
+    color: var(--ink); font-family: "Poppins", sans-serif;
+    font-size: 16px; font-weight: 500;
+    transition: color 200ms;
   }
-  .mobile-a:hover { color: #1C1C1A; }
+  .mobile-a:hover { color: var(--brand); }
 `;
 
 export function NavigationMenuSection({
@@ -66,17 +65,17 @@ export function NavigationMenuSection({
         className={cn(
           "fixed top-0 left-0 w-full z-50 transition-all duration-300",
           scrolled
-            ? "bg-[#F7F7F5] border-b border-[#E5E4E0] py-3"
+            ? "bg-white/95 backdrop-blur shadow-[0_4px_24px_-12px_rgba(83,53,152,0.25)] py-3"
             : "bg-transparent py-5",
         )}
-        style={sans}
       >
         <div className="max-w-6xl mx-auto px-6 md:px-10 flex items-center justify-between">
           {/* Logo */}
-          <a href="#home" className="no-underline" style={mono}>
-            <span className="text-[13px] text-[#1C1C1A] tracking-tight">
-              nhm.vagno
-            </span>
+          <a
+            href="#home"
+            className="font-[Poppins] font-bold text-[20px] text-[var(--ink)]"
+          >
+            nhm<span className="text-[var(--brand-accent)]">.</span>vagno
           </a>
 
           {/* Desktop */}
@@ -86,7 +85,7 @@ export function NavigationMenuSection({
                 <NavigationMenuList className="flex items-center gap-7">
                   {getNavItems(intl).map((item) => (
                     <NavigationMenuItem key={item.id}>
-                      <a href={item.link} className="nav-a" style={sans}>
+                      <a href={item.link} className="nav-a">
                         {item.label}
                       </a>
                     </NavigationMenuItem>
@@ -94,14 +93,14 @@ export function NavigationMenuSection({
                 </NavigationMenuList>
               </NavigationMenu>
 
-              <div className="flex items-center gap-[6px]" style={mono}>
+              <div className="flex items-center gap-[6px]">
                 <button
                   onClick={() => setLocale("en")}
                   className={cn("lang-btn", intl.locale === "en" && "on")}
                 >
                   EN
                 </button>
-                <span className="text-[#E5E4E0] select-none text-[11px]">
+                <span className="text-[var(--line)] select-none text-[12px]">
                   /
                 </span>
                 <button
@@ -118,14 +117,14 @@ export function NavigationMenuSection({
           {/* Mobile */}
           {isMobile && (
             <div className="flex items-center gap-5">
-              <div className="flex items-center gap-[6px]" style={mono}>
+              <div className="flex items-center gap-[6px]">
                 <button
                   onClick={() => setLocale("en")}
                   className={cn("lang-btn", intl.locale === "en" && "on")}
                 >
                   EN
                 </button>
-                <span className="text-[#E5E4E0] select-none text-[11px]">
+                <span className="text-[var(--line)] select-none text-[12px]">
                   /
                 </span>
                 <button
@@ -142,17 +141,17 @@ export function NavigationMenuSection({
                 className="flex flex-col gap-[5px] w-5"
               >
                 <span
-                  className="block h-px bg-[#A8A8A5] w-full transition-all duration-200"
+                  className="block h-px bg-[var(--ink)] w-full transition-all duration-200"
                   style={{
                     transform: open ? "rotate(45deg) translateY(6px)" : "none",
                   }}
                 />
                 <span
-                  className="block h-px bg-[#A8A8A5] w-full transition-all duration-200"
+                  className="block h-px bg-[var(--ink)] w-full transition-all duration-200"
                   style={{ opacity: open ? 0 : 1 }}
                 />
                 <span
-                  className="block h-px bg-[#A8A8A5] transition-all duration-200"
+                  className="block h-px bg-[var(--ink)] transition-all duration-200"
                   style={{
                     width: open ? "100%" : "60%",
                     transform: open
@@ -171,16 +170,15 @@ export function NavigationMenuSection({
             className="overflow-hidden transition-all duration-300"
             style={{ maxHeight: open ? "360px" : "0" }}
           >
-            <nav className="px-6 pb-7 pt-5 border-t border-[#E5E4E0] space-y-5 bg-[#F7F7F5]">
+            <nav className="px-6 pb-7 pt-5 border-t border-[var(--line)] space-y-5 bg-white">
               {getNavItems(intl).map((item, i) => (
                 <a
                   key={item.id}
                   href={item.link}
                   onClick={() => setOpen(false)}
                   className="mobile-a"
-                  style={sans}
                 >
-                  <span className="text-[10px] text-[#D4D4D1]" style={mono}>
+                  <span className="text-[12px] text-[var(--brand-accent)]">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   {item.label}

@@ -1,54 +1,18 @@
 import { useIntl } from "react-intl";
-import { FaGithub, FaLinkedin, FaInstagram, FaFacebook } from "react-icons/fa";
-
-const sans = { fontFamily: "'IBM Plex Sans', sans-serif" } as const;
-const mono = { fontFamily: "'IBM Plex Mono', monospace" } as const;
+import { socials } from "@/lib/utils";
 
 const css = `
-  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@300;400&display=swap');
-  .social-a { color: #8CA0C4; transition: color 200ms; }
-  .social-a:hover { color: #2563EB; }
+  .social-a {
+    width: 40px; height: 40px; border-radius: 100px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--brand); background: var(--brand-soft);
+    transition: background 200ms, color 200ms;
+  }
+  .social-a:hover { background: var(--brand); color: #fff; }
 `;
-
-interface SocialLink {
-  href: string;
-  label: string;
-  icon: React.ReactNode;
-}
-
-interface StatItem {
-  value: string;
-  labelId: string;
-}
 
 export function HeroSection() {
   const intl = useIntl();
-
-  const socials: SocialLink[] = [
-    { href: "https://github.com/nvagno", label: "GitHub", icon: <FaGithub /> },
-    {
-      href: "https://www.linkedin.com/in/ny-hasina-marolahy-vagno-7a34b6227/",
-      label: "LinkedIn",
-      icon: <FaLinkedin />,
-    },
-    {
-      href: "https://www.instagram.com/nyy_has/",
-      label: "Instagram",
-      icon: <FaInstagram />,
-    },
-    {
-      href: "https://www.facebook.com/nyhasina.vagno",
-      label: "Facebook",
-      icon: <FaFacebook />,
-    },
-  ];
-
-  const stats: StatItem[] = [
-    { value: "3", labelId: "xp_year" },
-    { value: "10", labelId: "xp_projects" },
-    { value: "5", labelId: "xp_client" },
-    { value: "24/7", labelId: "xp_support" },
-  ];
 
   const comments: string[] = [
     intl.formatMessage({ id: "comment1" }),
@@ -61,38 +25,24 @@ export function HeroSection() {
     <>
       <style>{css}</style>
 
-      <main id="home" className="bg-white" style={sans}>
-        <div className="max-w-6xl mx-auto px-6 md:px-10 py-20">
-          {/* ── Hero grid ────────────────────────────── */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-start mb-16">
-            {/* Photo */}
-            <div className="flex justify-center md:justify-start order-1">
-              <img
-                src="banner.png"
-                alt="Ny Hasina M. VAGNO"
-                className="w-48 md:w-60"
-              />
-            </div>
+      <main id="home" className="bg-white relative overflow-hidden">
+        {/* Soft background shape */}
+        <div
+          aria-hidden
+          className="absolute -top-40 -right-40 w-[560px] h-[560px] rounded-full bg-[var(--brand-soft)]"
+        />
 
+        <div className="relative max-w-6xl mx-auto px-6 md:px-10 pt-36 pb-24">
+          <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-14 items-center">
             {/* Identity */}
-            <div className="order-2 space-y-6">
-              <div>
-                <p
-                  className="text-[11px] text-[#8CA0C4] tracking-[0.08em] uppercase mb-2"
-                  style={mono}
-                >
-                  {intl.formatMessage({ id: "hello" })}
-                </p>
-                <h1 className="title-text">Ny Hasina M. VAGNO</h1>
-                <p
-                  className="text-[12px] text-[#2563EB] tracking-[0.05em] mt-1"
-                  style={mono}
-                >
-                  {intl.formatMessage({ id: "engineer" })}
-                </p>
-              </div>
-
-              <div className="border-t border-[#D9E4F5]" />
+            <div className="order-2 md:order-1 space-y-6">
+              <p className="eyebrow">{intl.formatMessage({ id: "hello" })}</p>
+              <h1 className="title-text">
+                Ny Hasina M. <span className="text-[var(--brand)]">VAGNO</span>
+              </h1>
+              <p className="font-[Poppins] font-semibold text-[18px] text-[var(--ink)]">
+                {intl.formatMessage({ id: "engineer" })}
+              </p>
 
               <div className="space-y-3">
                 <p className="content-text">
@@ -103,27 +53,21 @@ export function HeroSection() {
                 </p>
               </div>
 
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2">
-                {comments.map((c) => (
-                  <span
-                    key={c}
-                    className="text-[11px] text-[#4F6488] border border-[#D9E4F5] px-3 py-1 bg-white"
-                    style={sans}
-                  >
-                    {c}
-                  </span>
-                ))}
+              <div className="flex flex-wrap gap-3 pt-2">
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-pill btn-primary"
+                >
+                  Download CV
+                </a>
+                <a href="#contacts" className="btn-pill btn-outline">
+                  {intl.formatMessage({ id: "contacts" })}
+                </a>
               </div>
 
-              {/* Socials */}
-              <div className="flex items-center gap-5 text-[15px] pt-1">
-                <span
-                  className="text-[11px] text-[#8CA0C4] tracking-[0.05em]"
-                  style={mono}
-                >
-                  {intl.formatMessage({ id: "follow" })}
-                </span>
+              <div className="flex items-center gap-3 pt-2">
                 {socials.map(({ href, label, icon }) => (
                   <a
                     key={href}
@@ -138,6 +82,33 @@ export function HeroSection() {
                 ))}
               </div>
             </div>
+
+            {/* Photo */}
+            <div className="order-1 md:order-2 flex justify-center">
+              <div className="relative">
+                <div
+                  aria-hidden
+                  className="absolute inset-0 translate-x-4 translate-y-4 rounded-[32px] bg-gradient-to-br from-[var(--brand)] to-[var(--brand-accent)]"
+                />
+                <img
+                  src="banner.png"
+                  alt="Ny Hasina M. VAGNO"
+                  className="relative w-64 md:w-80 rounded-[32px] shadow-xl"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-3 mt-16">
+            {comments.map((c) => (
+              <span
+                key={c}
+                className="font-[Questrial] text-[14px] text-[var(--brand)] bg-[var(--brand-soft)] rounded-full px-5 py-2"
+              >
+                {c}
+              </span>
+            ))}
           </div>
         </div>
       </main>
