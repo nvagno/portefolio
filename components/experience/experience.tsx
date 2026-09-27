@@ -157,9 +157,7 @@ export function ExperienceSection() {
             >
               Collaborations
             </p>
-            <h2 className="text-[28px] font-medium text-[#0F2A4D] tracking-tight">
-              Professional Experience
-            </h2>
+            <h2 className="title-text">Professional Experience</h2>
           </div>
 
           <div className="hidden sm:flex items-center gap-2">

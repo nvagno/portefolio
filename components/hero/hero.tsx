@@ -83,12 +83,7 @@ export function HeroSection() {
                 >
                   {intl.formatMessage({ id: "hello" })}
                 </p>
-                <h1
-                  className="text-3xl md:text-4xl font-normal text-[#0F2A4D] leading-snug"
-                  style={sans}
-                >
-                  Ny Hasina M. VAGNO
-                </h1>
+                <h1 className="title-text">Ny Hasina M. VAGNO</h1>
                 <p
                   className="text-[12px] text-[#2563EB] tracking-[0.05em] mt-1"
                   style={mono}

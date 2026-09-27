@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Questrial&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Questrial&family=Poppins:wght@600;700&display=swap");
 
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -126,6 +126,22 @@
   }
   body {
     @apply bg-background text-foreground font-sans;
+  }
+}
+
+/* Section title style */
+.title-text {
+  font-family: "Poppins", sans-serif;
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 70px;
+  color: rgb(110, 110, 110);
+}
+
+@media (max-width: 640px) {
+  .title-text {
+    font-size: 36px;
+    line-height: 50px;
   }
 }
 
