@@ -129,7 +129,7 @@ export default function PhotoGallery() {
                   src={photo.src}
                   alt={photo.alt}
                   fill
-                  sizes="260px"
+                  sizes="800px"
                   onLoad={() => handleLoad(photo.id)}
                   className="object-cover"
                   style={{

@@ -81,7 +81,7 @@ export function ExperienceSection() {
                     src={job.logo}
                     alt={`${job.org} logo`}
                     fill
-                    sizes="112px"
+                    unoptimized
                     className="object-contain"
                   />
                 </div>
@@ -114,7 +114,7 @@ export function ExperienceSection() {
                       src={job.logo}
                       alt={`${job.org} logo`}
                       fill
-                      sizes="80px"
+                      unoptimized
                       className="object-contain"
                     />
                   </div>
