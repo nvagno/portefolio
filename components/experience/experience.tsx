@@ -74,7 +74,7 @@ export function ExperienceSection() {
             {jobs.map((job) => (
               <div
                 key={job.org}
-                className="logo-tile bg-white rounded-2xl px-3 py-5 sm:px-8 sm:py-6 flex flex-col items-center gap-3 sm:w-[180px]"
+                className="rounded-2xl px-3 py-5 sm:px-8 sm:py-6 flex flex-col items-center gap-3 sm:w-[180px]"
               >
                 <div className="w-full sm:w-28 h-16 relative">
                   <Image
@@ -131,7 +131,7 @@ export function ExperienceSection() {
                 <h3 className="font-[Poppins] font-bold text-[22px] leading-tight text-[var(--ink)]">
                   {job.role}
                 </h3>
-                <span className="self-start mt-3 mb-6 font-[Questrial] text-[13px] text-[var(--brand)] bg-[var(--brand-soft)] rounded-full px-4 py-1">
+                <span className="self-start mt-3 mb-6 font-[Questrial] text-[13px] px-4 py-1">
                   {job.period}
                 </span>
 
