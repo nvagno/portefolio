@@ -1,117 +1,119 @@
-import { useIntl } from "react-intl";
-import { socials } from "@/lib/utils";
+import Image from "next/image";
+import Link from "next/link";
+import { links, site } from "@/content/profile";
+import { Icon } from "@/components/icons/icons";
 
-const css = `
-  .social-a {
-    width: 40px; height: 40px; border-radius: 100px;
-    display: inline-flex; align-items: center; justify-content: center;
-    color: var(--brand); background: var(--brand-soft);
-    transition: background 200ms, color 200ms;
-  }
-  .social-a:hover { background: var(--brand); color: #fff; }
-`;
+const presence = [
+  { label: "Email", href: `mailto:${site.email}`, handle: site.email, icon: "email" as const, external: false },
+  ...links.map((l) => ({ ...l, external: true })),
+];
 
 export function HeroSection() {
-  const intl = useIntl();
-
-  const comments: string[] = [
-    intl.formatMessage({ id: "comment1" }),
-    intl.formatMessage({ id: "comment2" }),
-    intl.formatMessage({ id: "comment3" }),
-    intl.formatMessage({ id: "comment4" }),
-  ];
-
   return (
-    <>
-      <style>{css}</style>
+    <div className="mx-auto grid max-w-5xl gap-12 px-4 py-12 sm:px-8 md:grid-cols-[minmax(0,1fr)_14rem] md:gap-14 md:py-16">
+      <article>
+        <h1 className="sr-only">{site.fullName}</h1>
 
-      <main id="home" className="bg-white relative overflow-hidden">
-        {/* Soft background shape */}
-        <div
-          aria-hidden
-          className="absolute -top-40 -right-40 w-[560px] h-[560px] rounded-full bg-[var(--brand-soft)]"
+        <Image
+          src={site.portrait}
+          alt={`Portrait of ${site.name}`}
+          width={320}
+          height={320}
+          priority
+          sizes="160px"
+          className="mb-5 aspect-square w-32 border border-rule object-cover sm:float-left sm:mb-2 sm:mr-7 sm:w-40"
         />
 
-        <div className="relative max-w-6xl mx-auto px-6 md:px-10 pt-36 pb-24">
-          <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-14 items-center">
-            {/* Identity */}
-            <div className="order-2 md:order-1 space-y-6">
-              <p className="eyebrow">{intl.formatMessage({ id: "hello" })}</p>
-              <h1 className="title-text">
-                Ny Hasina M. <span className="text-[var(--brand)]">VAGNO</span>
-              </h1>
-              <p className="font-[Poppins] font-semibold text-[18px] text-[var(--ink)]">
-                {intl.formatMessage({ id: "engineer" })}
-              </p>
-
-              <div className="space-y-3">
-                <p className="content-text">
-                  {intl.formatMessage({ id: "description" })}
-                </p>
-                <p className="content-text">
-                  {intl.formatMessage({ id: "speciality" })}
-                </p>
-              </div>
-
-              <div className="flex flex-wrap gap-3 pt-2">
-                <a
-                  href="/resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-pill btn-primary"
-                >
-                  Download CV
-                </a>
-                <a href="#contacts" className="btn-pill btn-outline">
-                  {intl.formatMessage({ id: "contacts" })}
-                </a>
-              </div>
-
-              <div className="flex items-center gap-3 pt-2">
-                {socials.map(({ href, label, icon }) => (
-                  <a
-                    key={href}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    className="social-a"
-                  >
-                    {icon}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Photo */}
-            <div className="order-1 md:order-2 flex justify-center">
-              <div className="relative">
-                <div
-                  aria-hidden
-                  className="absolute inset-0 translate-x-4 translate-y-4 rounded-[32px] bg-gradient-to-br from-[var(--brand)] to-[var(--brand-accent)]"
-                />
-                <img
-                  src="banner.png"
-                  alt="Ny Hasina M. VAGNO"
-                  className="relative w-64 md:w-80 rounded-[32px] shadow-xl"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-3 mt-16">
-            {comments.map((c) => (
-              <span
-                key={c}
-                className="font-[Questrial] text-[14px] text-[var(--brand)] bg-[var(--brand-soft)] rounded-full px-5 py-2"
-              >
-                {c}
-              </span>
-            ))}
-          </div>
+        <div className="space-y-4 text-[1.0625rem] leading-[1.7] text-ink-2">
+          <p className="text-ink">
+            I am a final-year <strong className="font-semibold">engineering student in Computer Science</strong> at{" "}
+            <a href="https://esiroi.univ-reunion.fr" className="link" target="_blank" rel="noopener noreferrer">
+              ESIROI, Université de La Réunion
+            </a>
+            . My work is about getting computer vision models to produce <em>measurements</em>, not
+            just predictions: counting, locating and mapping objects in aerial and UAV imagery so
+            that the results hold up on the ground.
+          </p>
+          <p>
+            Most recently, I designed a drone-imagery pipeline for citrus yield estimation at the
+            Computer Networks Group (GRC) of the Universitat Politècnica de València. The difficult
+            parts sit between the detector and the map: building a reliable dataset, detecting small
+            and occluded fruits at full resolution, georeferencing detections and counting each tree
+            only once across overlapping views.
+          </p>
+          <p>
+            I came to research from engineering. Over three years at Numer I built production
+            systems for an aerial-imagery analytics platform, from training pipelines to event-driven
+            inference on AWS and Java backends. I still design experiments to be reproducible and
+            prototypes to run in production.
+          </p>
         </div>
-      </main>
-    </>
+
+        <h2 className="mt-10 clear-both text-lg font-semibold">Currently and recently</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-ink-2 marker:text-muted">
+          <li>
+            <strong className="font-semibold text-ink">Engineering student</strong>, Computer Science,
+            ESIROI, Université de La Réunion (2025–2027).
+          </li>
+          <li>
+            <strong className="font-semibold text-ink">Research intern</strong>, Computer Networks Group
+            (GRC), Universitat Politècnica de València (Apr.–Aug. 2026).{" "}
+            <Link href="/projects#citrus-yield" className="link">
+              Project
+            </Link>
+          </li>
+          <li>
+            <strong className="font-semibold text-ink">MLOps developer</strong>, Numer, for the Birdia
+            aerial-imagery platform (2022–2025).{" "}
+            <Link href="/projects#geospatial-platform" className="link">
+              Project
+            </Link>
+          </li>
+          <li>
+            <strong className="font-semibold text-ink">Teaching assistant</strong>, HEI, Antananarivo
+            (2024–2025).
+          </li>
+        </ul>
+
+        <p className="mt-8 text-ink-2">
+          More on my{" "}
+          <Link href="/research" className="link">research interests</Link>,{" "}
+          <Link href="/projects" className="link">projects</Link>,{" "}
+          <Link href="/publications" className="link">publications</Link> and{" "}
+          <Link href="/cv" className="link">CV</Link>.
+        </p>
+      </article>
+
+      <aside className="space-y-10 border-t border-rule pt-8 text-sm md:border-l md:border-t-0 md:pl-8 md:pt-1">
+        <div>
+          <h2 className="label">Online presence</h2>
+          <ul className="mt-3 space-y-2.5">
+            {presence.map((p) => (
+              <li key={p.href}>
+                <a
+                  href={p.href}
+                  className="group flex items-center gap-2.5 text-ink-2 hover:text-ink"
+                  {...(p.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                >
+                  <Icon name={p.icon} className="size-[18px] shrink-0 text-muted group-hover:text-ink" />
+                  <span>{p.label}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="label">Open to</h2>
+          <p className="mt-3 leading-relaxed text-ink-2">
+            A six-month end-of-studies internship from <strong className="font-semibold text-ink">February 2027</strong>,
+            Paris / Île-de-France.{" "}
+            <Link href="/contact" className="link">
+              Get in touch
+            </Link>
+          </p>
+        </div>
+      </aside>
+    </div>
   );
 }
